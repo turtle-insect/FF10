@@ -49,7 +49,7 @@ namespace FF10
 		public ushort Calc(ref Byte[] buf, int start, int end)
 		{
 			uint crc = 0xFFFF;
-			for (uint i = 0x48; i < 0x6500; i++)
+			for (int i = start; i < end; i++)
 			{
 				crc = mTable[(crc >> 8) ^ buf[i]] ^ (crc << 8);
 				crc &= 0xFFFF;

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FF10"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="FF10 SaveEditor(Nintendo Switch)" Height="550" Width="800"
+        Title="FF10 SaveEditor(Nintendo Switch)" Height="500" Width="700"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver">
     <Window.DataContext>
         <local:ViewModel/>
@@ -24,6 +24,14 @@
                 </MenuItem>
                 <MenuItem Header="_About" Click="MenuItemAbout_Click"/>
             </Menu>
+            <ToolBar DockPanel.Dock="Top">
+                <Button Height="32" Click="MenuItemFileOpen_Click">
+                    <Image Source="{StaticResource Open}"/>
+                </Button>
+                <Button Height="32" Click="MenuItemFileSave_Click">
+                    <Image Source="{StaticResource Save}"/>
+                </Button>
+            </ToolBar>
             <TabControl>
                 <TabItem Header="Basic">
                     <Grid>
@@ -42,7 +50,7 @@
                         <TextBox Grid.Column="1" Text="{Binding GIL}"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Charactor">
+                <TabItem Header="Character">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>

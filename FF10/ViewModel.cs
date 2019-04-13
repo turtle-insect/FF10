@@ -11,7 +11,7 @@ namespace FF10
 {
 	class ViewModel
 	{
-		public ObservableCollection<Charactor> Party { get; set; } = new ObservableCollection<Charactor>();
+		public ObservableCollection<Character> Party { get; set; } = new ObservableCollection<Character>();
 		public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
 		public ObservableCollection<Equipment> Equipments { get; set; } = new ObservableCollection<Equipment>();
 		public Info Info { get; set; } = Info.Instance();
@@ -20,7 +20,7 @@ namespace FF10
 		{
 			for(uint i = 0; i < 7; i++)
 			{
-				Party.Add(new Charactor(0x5616 + i * 148));
+				Party.Add(new Character(0x5616 + i * 148));
 			}
 
 			for(uint i = 0; i < 256; i++)

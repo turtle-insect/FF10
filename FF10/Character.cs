@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FF10
 {
-	class Charactor
+	class Character
 	{
 		private readonly uint mAddress;
 
-		public Charactor(uint address)
+		public Character(uint address)
 		{
 			mAddress = address;
 		}
@@ -31,9 +31,9 @@ namespace FF10
 			get { return SaveData.Instance().ReadNumber(mAddress + 6, 4); }
 			set
 			{
-				Util.WriteNumber(mAddress + 6, 4, value, 0, 99999);
-				Util.WriteNumber(mAddress + 30, 4, value, 0, 99999);
-				Util.WriteNumber(mAddress + 38, 4, value, 0, 99999);
+				Util.WriteNumber(mAddress + 6, 4, value, 0, 9999);
+				Util.WriteNumber(mAddress + 30, 4, value, 0, 9999);
+				Util.WriteNumber(mAddress + 38, 4, value, 0, 9999);
 			}
 		}
 
