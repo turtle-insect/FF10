@@ -95,6 +95,57 @@
                         </Grid>
                     </Grid>
                 </TabItem>
+                <TabItem Header="Item">
+                    <ListBox ItemsSource="{Binding Items}">
+                        <ListBox.Resources>
+                            <local:ItemConverter x:Key="ItemConverter"/>
+                        </ListBox.Resources>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Count : "/>
+                                    <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="30"/>
+                                    <Label Content=" Name : "/>
+                                    <Button Content="..." Click="ButtonItem_Click"/>
+                                    <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Equipment">
+                    <ListBox Name="ListBoxEquipment" ItemsSource="{Binding Equipments}">
+                        <ListBox.Resources>
+                            <local:EquipmentConverter x:Key="EquipmentConverter"/>
+                            <local:AbilityConverter x:Key="AbilityConverter"/>
+                        </ListBox.Resources>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Width="300">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Name : "/>
+                                        <Button Content="..." Click="ButtonEquipmentItem_Click"/>
+                                        <Label Content="{Binding ID, Converter={StaticResource EquipmentConverter}}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Slot Count : "/>
+                                        <TextBox Text="{Binding SlotCount, UpdateSourceTrigger=PropertyChanged}" Width="30"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                                  SelectedIndex="{Binding Abilitie1, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                                  SelectedIndex="{Binding Abilitie2, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                                  SelectedIndex="{Binding Abilitie3, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                                  SelectedIndex="{Binding Abilitie4, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>

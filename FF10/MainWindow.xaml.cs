@@ -80,6 +80,25 @@ namespace FF10
 			new AboutWindow().ShowDialog();
 		}
 
+		private void ButtonEquipmentItem_Click(object sender, RoutedEventArgs e)
+		{
+			Equipment equip = (sender as Button)?.DataContext as Equipment;
+			var dlg = new ChoiceWindow();
+			dlg.ID = equip.ID;
+			dlg.Type = ChoiceWindow.eType.eEquipment;
+			dlg.ShowDialog();
+			equip.ID = dlg.ID;
+		}
+
+		private void ButtonItem_Click(object sender, RoutedEventArgs e)
+		{
+			Item item = (sender as Button)?.DataContext as Item;
+			var dlg = new ChoiceWindow();
+			dlg.ID = item.ID;
+			dlg.ShowDialog();
+			item.ID = dlg.ID;
+		}
+
 		private void Load(String filename, bool force)
 		{
 			if (SaveData.Instance().Open(filename, force) == false)
