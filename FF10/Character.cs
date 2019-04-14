@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace FF10
 {
 	class Character
 	{
 		private readonly uint mAddress;
+		public NameValueInfo Info { get; set; }
+		public ObservableCollection<BitValue> Skills { get; set; } = new ObservableCollection<BitValue>();
 
 		public Character(uint address)
 		{
 			mAddress = address;
+
+			foreach (var info in FF10.Info.Instance().Skills)
+			{
+				Skills.Add(new BitValue(address + 60, info));
+			}
 		}
 
 		public uint HP

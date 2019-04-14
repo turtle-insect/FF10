@@ -57,7 +57,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <ListBox Name="ListBoxParty" ItemsSource="{Binding Party}"/>
+                        <ListBox Name="ListBoxParty" ItemsSource="{Binding Party}" DisplayMemberPath="Info.Name"/>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -101,6 +101,20 @@
                             <Label Grid.Row="10" Content="Hit"/>
                             <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Hit, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
+                        <TabControl Grid.Column="2">
+                            <TabItem Header="Skill">
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding Have}" VerticalAlignment="Center"/>
+                                                <Label Content="{Binding Info.Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </TabItem>
+                        </TabControl>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Item">
@@ -116,6 +130,18 @@
                                     <Label Content=" Name : "/>
                                     <Button Content="..." Click="ButtonItem_Click"/>
                                     <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="KeyItem">
+                    <ListBox ItemsSource="{Binding KeyItems}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding Have}" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Info.Name}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -153,6 +179,29 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                </TabItem>
+                <TabItem Header="BlizBall">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Name="ListBoxBlitz" ItemsSource="{Binding Blitz}" DisplayMemberPath="Info.Name">
+                        </ListBox>
+                        <DockPanel Grid.Column="1">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                                <Label Content="Exp : "/>
+                                <TextBox Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                            </StackPanel>
+                            <ListBox ItemsSource="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Skills}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Info.Name}" IsChecked="{Binding Have}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </DockPanel>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </DockPanel>
