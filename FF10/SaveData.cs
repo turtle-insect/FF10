@@ -67,17 +67,30 @@ namespace FF10
 			return Save();
 		}
 
-		public bool Export(String filename)
-		{
-			if (mFileName == null || mBuffer == null) return false;
-			System.IO.File.WriteAllBytes(filename, mBuffer);
-			return true;
-		}
-
 		public bool Import(String filename)
 		{
 			if (mFileName == null || mBuffer == null) return false;
-			mBuffer = System.IO.File.ReadAllBytes(filename);
+			if (System.IO.File.Exists(filename) == false) return false;
+
+			long filesize = new System.IO.FileInfo(filename).Length;
+			Byte[] tmp = new Byte[filesize + 8];
+			Array.Copy(mBuffer, 0, tmp, 0, 8);
+			Array.Copy(System.IO.File.ReadAllBytes(filename), 0, tmp, 8, filesize);
+			mBuffer = tmp;
+			WriteNumber(0x64FC, 2, 0);
+			return true;
+		}
+
+		public bool Export(String filename)
+		{
+			if (mFileName == null || mBuffer == null) return false;
+
+			uint calc = new Crc16().Calc(ref mBuffer, 0x48, 0x6500);
+			WriteNumber(0x22, 2, calc);
+			WriteNumber(0x64FC, 2, calc);
+			Byte[] tmp = new Byte[mBuffer.Length - 8];
+			Array.Copy(mBuffer, 8, tmp, 0, mBuffer.Length - 8);
+			System.IO.File.WriteAllBytes(filename, tmp);
 			return true;
 		}
 

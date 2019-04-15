@@ -20,6 +20,9 @@
                     <MenuItem Header="_Save" Click="MenuItemFileSave_Click"/>
                     <MenuItem Header="Save_As" Click="MenuItemFileSaveAs_Click"/>
                     <Separator/>
+                    <MenuItem Header="_Import" Click="MenuItemFileImport_Click"/>
+                    <MenuItem Header="Export" Click="MenuItemFileExport_Click"/>
+                    <Separator/>
                     <MenuItem Header="_Exit" Click="MenuItemFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_About" Click="MenuItemAbout_Click"/>

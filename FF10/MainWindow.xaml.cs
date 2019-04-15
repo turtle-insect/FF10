@@ -70,6 +70,23 @@ namespace FF10
 			else MessageBox.Show(Properties.Resources.MessageSaveFail);
 		}
 
+		private void MenuItemFileImport_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog dlg = new OpenFileDialog();
+			if (dlg.ShowDialog() == false) return;
+
+			SaveData.Instance().Import(dlg.FileName);
+			DataContext = new ViewModel();
+		}
+
+		private void MenuItemFileExport_Click(object sender, RoutedEventArgs e)
+		{
+			SaveFileDialog dlg = new SaveFileDialog();
+			if (dlg.ShowDialog() == false) return;
+
+			SaveData.Instance().Export(dlg.FileName);
+		}
+
 		private void MenuItemFileExit_Click(object sender, RoutedEventArgs e)
 		{
 			Close();
