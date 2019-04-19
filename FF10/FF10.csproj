@@ -73,6 +73,7 @@
     <Compile Include="ItemConverter.cs" />
     <Compile Include="BitValue.cs" />
     <Compile Include="NameValueInfo.cs" />
+    <Compile Include="OverDrive.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="ViewModel.cs" />

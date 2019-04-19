@@ -12,6 +12,7 @@ namespace FF10
 		public List<NameValueInfo> Equipments { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Abilities { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Skills { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> OverDrives { get; private set; } = new List<NameValueInfo>();
 
 		public List<NameValueInfo> Blitz_Player { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Blitz_Skill { get; private set; } = new List<NameValueInfo>();
@@ -51,6 +52,7 @@ namespace FF10
 			AppendList("info\\equipment.txt", Equipments);
 			AppendList("info\\ability.txt", Abilities);
 			AppendList("info\\skill.txt", Skills);
+			AppendList("info\\overdrive.txt", OverDrives);
 
 			AppendList("info\\blitz_player.txt", Blitz_Player);
 			AppendList("info\\blitz_skill.txt", Blitz_Skill);

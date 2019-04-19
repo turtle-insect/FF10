@@ -12,6 +12,7 @@ namespace FF10
 		private readonly uint mAddress;
 		public NameValueInfo Info { get; set; }
 		public ObservableCollection<BitValue> Skills { get; set; } = new ObservableCollection<BitValue>();
+		public ObservableCollection<OverDrive> OverDrives { get; set; } = new ObservableCollection<OverDrive>();
 
 		public Character(uint address)
 		{
@@ -20,6 +21,11 @@ namespace FF10
 			foreach (var info in FF10.Info.Instance().Skills)
 			{
 				Skills.Add(new BitValue(address + 60, info));
+			}
+
+			foreach (var info in FF10.Info.Instance().OverDrives)
+			{
+				OverDrives.Add(new OverDrive(address + 94 + info.Value * 2, address + 134, info));
 			}
 		}
 

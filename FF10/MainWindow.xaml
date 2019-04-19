@@ -117,6 +117,19 @@
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </TabItem>
+                            <TabItem Header="OverDrive">
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxParty, Path=SelectedItem.OverDrives}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding Enable}" VerticalAlignment="Center"/>
+                                                <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="30"/>
+                                                <Label Content="{Binding Info.Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </TabItem>
                         </TabControl>
                     </Grid>
                 </TabItem>
@@ -192,10 +205,23 @@
                         <ListBox Name="ListBoxBlitz" ItemsSource="{Binding Blitz}" DisplayMemberPath="Info.Name">
                         </ListBox>
                         <DockPanel Grid.Column="1">
-                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                                <Label Content="Exp : "/>
-                                <TextBox Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                            </StackPanel>
+                            <Grid DockPanel.Dock="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Lv"/>
+                                <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Grid.Row="1" Content="Exp"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Grid.Row="2" Content="Slot"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Slot, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
                             <ListBox ItemsSource="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Skills}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>

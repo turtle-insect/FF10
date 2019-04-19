@@ -9,13 +9,17 @@ namespace FF10
 {
 	class BlitzBall
 	{
-		private readonly uint mAddress;
+		private readonly uint mExpAddress;
+		private readonly uint mSlotAddress;
+		private readonly uint mLvAddress;
 		public NameValueInfo Info { get; }
 		public ObservableCollection<BitValue> Skills { get; set; } = new ObservableCollection<BitValue>();
 
 		public BlitzBall(uint address, NameValueInfo info)
 		{
-			mAddress = address + 1384 + info.Value * 2;
+			mExpAddress = address + 1384 + info.Value * 2;
+			mSlotAddress = address + 914 + info.Value;
+			mLvAddress = address + 974 + info.Value;
 			Info = info;
 
 			foreach (var item in FF10.Info.Instance().Blitz_Skill)
@@ -24,10 +28,22 @@ namespace FF10
 			}
 		}
 
+		public uint Lv
+		{
+			get { return SaveData.Instance().ReadNumber(mLvAddress, 1); }
+			set { Util.WriteNumber(mLvAddress, 1, value, 1, 99); }
+		}
+
 		public uint Exp
 		{
-			get { return SaveData.Instance().ReadNumber(mAddress, 2); }
-			set { Util.WriteNumber(mAddress, 2, value, 0, 9999); }
+			get { return SaveData.Instance().ReadNumber(mExpAddress, 2); }
+			set { Util.WriteNumber(mExpAddress, 2, value, 0, 9999); }
+		}
+
+		public uint Slot
+		{
+			get { return SaveData.Instance().ReadNumber(mSlotAddress, 1); }
+			set { Util.WriteNumber(mSlotAddress, 1, value, 0, 5); }
 		}
 	}
 }
