@@ -16,6 +16,8 @@ namespace FF10
 		public ObservableCollection<BitValue> KeyItems { get; set; } = new ObservableCollection<BitValue>();
 		public ObservableCollection<Equipment> Equipments { get; set; } = new ObservableCollection<Equipment>();
 		public ObservableCollection<BlitzBall> Blitz { get; set; } = new ObservableCollection<BlitzBall>();
+		public ObservableCollection<IntValue> Blitz_Term { get; set; } = new ObservableCollection<IntValue>();
+		public ObservableCollection<IntValue> Monsters { get; set; } = new ObservableCollection<IntValue>();
 		public Info Info { get; set; } = Info.Instance();
 
 		public ViewModel()
@@ -42,8 +44,24 @@ namespace FF10
 
 			foreach (var info in Info.Instance().Blitz_Player)
 			{
+				if (info.Value >= 60) continue;
 				Blitz.Add(new BlitzBall(0x1234, info));
 			}
+			for (uint i = 0; i < 8; i++)
+			{
+				Blitz_Term.Add(new IntValue(0x1676 + i, 1));
+			}
+
+			foreach (var info in Info.Instance().Monsters)
+			{
+				Monsters.Add(new IntValue(0x4254 + info.Value, 1) { Info = info });
+			}
+		}
+
+		public uint BlitzTermCount
+		{
+			get { return SaveData.Instance().ReadNumber(0xCC1, 1); }
+			set { Util.WriteNumber(0xCC1, 1, value, 0, 8); }
 		}
 
 		public uint GIL

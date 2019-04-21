@@ -60,6 +60,7 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BlitzBall.cs" />
+    <Compile Include="BlitzPlayerConverter.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
@@ -69,6 +70,7 @@
     <Compile Include="EquipmentConverter.cs" />
     <Compile Include="ILineAnalysis.cs" />
     <Compile Include="Info.cs" />
+    <Compile Include="IntValue.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemConverter.cs" />
     <Compile Include="BitValue.cs" />

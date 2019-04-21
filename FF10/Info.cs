@@ -17,6 +17,8 @@ namespace FF10
 		public List<NameValueInfo> Blitz_Player { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Blitz_Skill { get; private set; } = new List<NameValueInfo>();
 
+		public List<NameValueInfo> Monsters { get; private set; } = new List<NameValueInfo>();
+
 		private Info() { }
 
 		public static Info Instance()
@@ -56,6 +58,8 @@ namespace FF10
 
 			AppendList("info\\blitz_player.txt", Blitz_Player);
 			AppendList("info\\blitz_skill.txt", Blitz_Skill);
+
+			AppendList("info\\monster.txt", Monsters);
 		}
 
 		private void AppendList<Type>(String filename, List<Type> items)

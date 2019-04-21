@@ -201,12 +201,36 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <ListBox Name="ListBoxBlitz" ItemsSource="{Binding Blitz}" DisplayMemberPath="Info.Name">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Term Count"/>
+                                <TextBox Grid.Column="1" Text="{Binding BlitzTermCount, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+                            <ListBox ItemsSource="{Binding Blitz_Term}">
+                                <ListBox.Resources>
+                                    <local:BlitzPlayerConverter x:Key="BlitzPlayerConverter"/>
+                                </ListBox.Resources>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow},
+                                        Path=DataContext.Info.Blitz_Player}" SelectedIndex="{Binding Value, Converter={StaticResource BlitzPlayerConverter}}"
+                                              DisplayMemberPath="Name" Width="200"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                        <ListBox Grid.Column="1" Name="ListBoxBlitz" ItemsSource="{Binding Blitz}" DisplayMemberPath="Info.Name">
                         </ListBox>
-                        <DockPanel Grid.Column="1">
+                        <DockPanel Grid.Column="2">
                             <Grid DockPanel.Dock="Top">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -219,8 +243,10 @@
                                 <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Grid.Row="1" Content="Exp"/>
                                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Label Grid.Row="2" Content="Slot"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Slot, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Grid.Row="2" Content="Agreement"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Agreement, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Grid.Row="3" Content="Slot"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Slot, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
                             <ListBox ItemsSource="{Binding ElementName=ListBoxBlitz, Path=SelectedItem.Skills}">
                                 <ListBox.ItemTemplate>
@@ -231,6 +257,18 @@
                             </ListBox>
                         </DockPanel>
                     </Grid>
+                </TabItem>
+                <TabItem Header="Monster">
+                    <ListBox ItemsSource="{Binding Monsters}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding Info.Name}" Width="120"/>
+                                    <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Width="30"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem>
             </TabControl>
         </DockPanel>
