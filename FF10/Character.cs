@@ -104,5 +104,11 @@ namespace FF10
 			get { return SaveData.Instance().ReadNumber(mAddress + 17, 1); }
 			set { Util.WriteNumber(mAddress + 17, 1, value, 0, 255); }
 		}
+
+		public uint OverDriveGauge
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 55, 1); }
+			set { Util.WriteNumber(mAddress + 55, 1, value, 0, 100); }
+		}
 	}
 }
