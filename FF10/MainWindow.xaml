@@ -40,7 +40,15 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition Height="15*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -51,6 +59,13 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="GIL"/>
                         <TextBox Grid.Column="1" Text="{Binding GIL}"/>
+                        <Label Grid.Row="2" Content="Yuna Like"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FavorabilityRatings[0].Value}"/>
+                        <Label Grid.Row="3" Content="Auron Like"/>
+                        <Label Grid.Row="4" Content="Kimahri Like"/>
+                        <Label Grid.Row="5" Content="Wakka Like"/>
+                        <Label Grid.Row="6" Content="Lulu Like"/>
+                        <Label Grid.Row="7" Content="Rikku Like"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Character">

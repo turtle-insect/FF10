@@ -18,6 +18,7 @@ namespace FF10
 		public ObservableCollection<BlitzBall> Blitz { get; set; } = new ObservableCollection<BlitzBall>();
 		public ObservableCollection<IntValue> Blitz_Term { get; set; } = new ObservableCollection<IntValue>();
 		public ObservableCollection<IntValue> Monsters { get; set; } = new ObservableCollection<IntValue>();
+		public ObservableCollection<IntValue> FavorabilityRatings { get; set; } = new ObservableCollection<IntValue>();
 		public Info Info { get; set; } = Info.Instance();
 
 		public ViewModel()
@@ -56,6 +57,11 @@ namespace FF10
 			{
 				Monsters.Add(new IntValue(0x4254 + info.Value, 1) { Info = info });
 			}
+
+			for (uint i = 0; i < 6; i++)
+			{
+				FavorabilityRatings.Add(new IntValue(0x78 + i * 4, 4));
+			}
 		}
 
 		public uint BlitzTermCount
@@ -68,6 +74,24 @@ namespace FF10
 		{
 			get { return SaveData.Instance().ReadNumber(0x3D90, 4); }
 			set { Util.WriteNumber(0x3D90, 4, value, 0, 9999999); }
+		}
+
+		public uint ThunderFall
+		{
+			get { return SaveData.Instance().ReadNumber(0x444, 2); }
+			set { Util.WriteNumber(0x444, 2, value, 0, 0xFFFF); }
+		}
+
+		public uint ThunderAvoidance
+		{
+			get { return SaveData.Instance().ReadNumber(0x446, 2); }
+			set { Util.WriteNumber(0x446, 2, value, 0, 0xFFFF); }
+		}
+
+		public uint ThunderContinuousAvoidance
+		{
+			get { return SaveData.Instance().ReadNumber(0x448, 2); }
+			set { Util.WriteNumber(0x448, 2, value, 0, 0xFFFF); }
 		}
 	}
 }
