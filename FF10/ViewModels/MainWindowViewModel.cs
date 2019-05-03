@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using FF10.Models;
+using FF10.Helpers;
 
-namespace FF10
+namespace FF10.ViewModels
 {
-	class ViewModel
+	class MainWindowViewModel
 	{
 		public ObservableCollection<Character> Party { get; set; } = new ObservableCollection<Character>();
 		public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
@@ -21,7 +23,7 @@ namespace FF10
 		public ObservableCollection<IntValue> FavorabilityRatings { get; set; } = new ObservableCollection<IntValue>();
 		public Info Info { get; set; } = Info.Instance();
 
-		public ViewModel()
+		public MainWindowViewModel()
 		{
 			foreach(var info in Info.Instance().Party)
 			{

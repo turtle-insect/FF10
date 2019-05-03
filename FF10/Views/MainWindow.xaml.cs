@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FF10.Models;
+using FF10.ViewModels;
 using Microsoft.Win32;
 
-namespace FF10
+namespace FF10.Views
 {
 	/// <summary>
 	/// MainWindow.xaml の相互作用ロジック
@@ -76,7 +78,7 @@ namespace FF10
 			if (dlg.ShowDialog() == false) return;
 
 			SaveData.Instance().Import(dlg.FileName);
-			DataContext = new ViewModel();
+			DataContext = new MainWindowViewModel();
 		}
 
 		private void MenuItemFileExport_Click(object sender, RoutedEventArgs e)
@@ -124,7 +126,7 @@ namespace FF10
 				return;
 			}
 
-			DataContext = new ViewModel();
+			DataContext = new MainWindowViewModel();
 			MessageBox.Show(Properties.Resources.MessageLoadSuccess);
 		}
 

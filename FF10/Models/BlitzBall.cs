@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using FF10.Helpers;
 
-namespace FF10
+namespace FF10.Models
 {
 	class BlitzBall
 	{
