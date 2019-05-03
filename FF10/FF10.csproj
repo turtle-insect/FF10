@@ -78,7 +78,7 @@
     <Compile Include="Models\OverDrive.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Helpers\Util.cs" />
-    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="Views\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

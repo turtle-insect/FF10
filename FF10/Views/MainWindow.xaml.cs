@@ -78,7 +78,7 @@ namespace FF10.Views
 			if (dlg.ShowDialog() == false) return;
 
 			SaveData.Instance().Import(dlg.FileName);
-			DataContext = new ViewModel();
+			DataContext = new MainWindowViewModel();
 		}
 
 		private void MenuItemFileExport_Click(object sender, RoutedEventArgs e)
@@ -126,7 +126,7 @@ namespace FF10.Views
 				return;
 			}
 
-			DataContext = new ViewModel();
+			DataContext = new MainWindowViewModel();
 			MessageBox.Show(Properties.Resources.MessageLoadSuccess);
 		}
 

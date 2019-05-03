@@ -11,7 +11,7 @@
         Title="FF10 SaveEditor(Nintendo Switch)" Height="500" Width="700"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver">
     <Window.DataContext>
-        <viewmodels:ViewModel/>
+        <viewmodels:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <DockPanel>
