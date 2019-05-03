@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
-namespace FF10
+namespace FF10.Models
 {
 	class Character
 	{

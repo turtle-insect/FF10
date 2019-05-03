@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FF10.Models;
+using FF10.ViewModels;
 using Microsoft.Win32;
 
-namespace FF10
+namespace FF10.Views
 {
 	/// <summary>
 	/// MainWindow.xaml の相互作用ロジック

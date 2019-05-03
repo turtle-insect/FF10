@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace FF10
+namespace FF10.Views
 {
 	/// <summary>
 	/// ChoiceWindow.xaml の相互作用ロジック

@@ -55,39 +55,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AbilityConverter.cs" />
-    <Compile Include="AboutWindow.xaml.cs">
+    <Compile Include="Converters\AbilityConverter.cs" />
+    <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BlitzBall.cs" />
-    <Compile Include="BlitzPlayerConverter.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="ChoiceWindow.xaml.cs">
+    <Compile Include="Models\BlitzBall.cs" />
+    <Compile Include="Converters\BlitzPlayerConverter.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Views\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Crc16.cs" />
-    <Compile Include="Equipment.cs" />
-    <Compile Include="EquipmentConverter.cs" />
+    <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Converters\EquipmentConverter.cs" />
     <Compile Include="ILineAnalysis.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="IntValue.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemConverter.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Converters\ItemConverter.cs" />
     <Compile Include="BitValue.cs" />
     <Compile Include="NameValueInfo.cs" />
-    <Compile Include="OverDrive.cs" />
+    <Compile Include="Models\OverDrive.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="ViewModel.cs" />
-    <Page Include="AboutWindow.xaml">
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="Views\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChoiceWindow.xaml">
+    <Page Include="Views\ChoiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -95,7 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace FF10
+namespace FF10.Models
 {
 	class Equipment : INotifyPropertyChanged
 	{

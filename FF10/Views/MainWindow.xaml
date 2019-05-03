@@ -1,15 +1,17 @@
-﻿<Window x:Class="FF10.MainWindow"
+﻿<Window x:Class="FF10.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FF10"
+        xmlns:coverters="clr-namespace:FF10.Converters"
+        xmlns:viewmodels="clr-namespace:FF10.ViewModels"
+        xmlns:views="clr-namespace:FF10.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="FF10 SaveEditor(Nintendo Switch)" Height="500" Width="700"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver">
     <Window.DataContext>
-        <local:ViewModel/>
+        <viewmodels:ViewModel/>
     </Window.DataContext>
     <Grid>
         <DockPanel>
@@ -153,7 +155,7 @@
                 <TabItem Header="Item">
                     <ListBox ItemsSource="{Binding Items}">
                         <ListBox.Resources>
-                            <local:ItemConverter x:Key="ItemConverter"/>
+                            <coverters:ItemConverter x:Key="ItemConverter"/>
                         </ListBox.Resources>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -183,8 +185,8 @@
                 <TabItem Header="Equipment">
                     <ListBox Name="ListBoxEquipment" ItemsSource="{Binding Equipments}">
                         <ListBox.Resources>
-                            <local:EquipmentConverter x:Key="EquipmentConverter"/>
-                            <local:AbilityConverter x:Key="AbilityConverter"/>
+                            <coverters:EquipmentConverter x:Key="EquipmentConverter"/>
+                            <coverters:AbilityConverter x:Key="AbilityConverter"/>
                         </ListBox.Resources>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -199,13 +201,13 @@
                                         <TextBox Text="{Binding SlotCount, UpdateSourceTrigger=PropertyChanged}" Width="30"/>
                                     </StackPanel>
                                     <StackPanel>
-                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:MainWindow}, Path=DataContext.Info.Abilities}"
                                                   SelectedIndex="{Binding Abilitie1, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
-                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:MainWindow}, Path=DataContext.Info.Abilities}"
                                                   SelectedIndex="{Binding Abilitie2, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
-                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:MainWindow}, Path=DataContext.Info.Abilities}"
                                                   SelectedIndex="{Binding Abilitie3, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
-                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=DataContext.Info.Abilities}"
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:MainWindow}, Path=DataContext.Info.Abilities}"
                                                   SelectedIndex="{Binding Abilitie4, Converter={StaticResource AbilityConverter}}" DisplayMemberPath="Name"/>
                                     </StackPanel>
                                 </StackPanel>
@@ -231,11 +233,11 @@
                             </Grid>
                             <ListBox ItemsSource="{Binding Blitz_Term}">
                                 <ListBox.Resources>
-                                    <local:BlitzPlayerConverter x:Key="BlitzPlayerConverter"/>
+                                    <coverters:BlitzPlayerConverter x:Key="BlitzPlayerConverter"/>
                                 </ListBox.Resources>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow},
+                                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:MainWindow},
                                         Path=DataContext.Info.Blitz_Player}" SelectedIndex="{Binding Value, Converter={StaticResource BlitzPlayerConverter}}"
                                               DisplayMemberPath="Name" Width="200"/>
                                     </DataTemplate>

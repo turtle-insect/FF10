@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using FF10.Models;
 
-namespace FF10
+namespace FF10.ViewModels
 {
 	class ViewModel
 	{
