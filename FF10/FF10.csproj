@@ -65,19 +65,19 @@
     <Compile Include="Views\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Crc16.cs" />
+    <Compile Include="Helpers\Crc16.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Converters\EquipmentConverter.cs" />
     <Compile Include="ILineAnalysis.cs" />
     <Compile Include="Info.cs" />
-    <Compile Include="IntValue.cs" />
+    <Compile Include="Helpers\IntValue.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Converters\ItemConverter.cs" />
-    <Compile Include="BitValue.cs" />
+    <Compile Include="Helpers\BitValue.cs" />
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="Models\OverDrive.cs" />
     <Compile Include="SaveData.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Helpers\Util.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Page Include="Views\AboutWindow.xaml">
       <SubType>Designer</SubType>

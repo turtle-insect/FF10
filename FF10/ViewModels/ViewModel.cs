@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using FF10.Models;
+using FF10.Helpers;
 
 namespace FF10.ViewModels
 {
